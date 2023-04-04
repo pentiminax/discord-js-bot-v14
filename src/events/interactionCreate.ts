@@ -1,11 +1,11 @@
 import { BotEvent } from "../types";
-import { Events, Interaction, EmbedBuilder,   } from "discord.js";
+import { Events, Interaction, EmbedBuilder, CommandInteractionOptionResolver,   } from "discord.js";
  
 
 const event: BotEvent = {
     name: Events.InteractionCreate,
     once: false,
-    async execute(  interaction: Interaction) {
+    async execute(  interaction: Interaction, ) {
         if (!interaction.isChatInputCommand()) return;
    
         // console.log(interaction)
@@ -15,7 +15,7 @@ const event: BotEvent = {
 
         if (!command) return;
 
-        await command.execute(interaction);
+        await command.execute(interaction, interaction.options as CommandInteractionOptionResolver);
 
     
 	
