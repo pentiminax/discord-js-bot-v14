@@ -5,17 +5,17 @@ import { Events, Interaction, EmbedBuilder, CommandInteractionOptionResolver,   
 const event: BotEvent = {
     name: Events.InteractionCreate,
     once: false,
-    async execute(  interaction: Interaction, ) {
+    async execute(client, interaction: Interaction, ) {
         if (!interaction.isChatInputCommand()) return;
    
         // console.log(interaction)
         console.log
 
-        const command = interaction.client.slashCommands.get(interaction.commandName);
+        const command = client.slashCommands.get(interaction.commandName);
 
         if (!command) return;
 
-        await command.execute(interaction, interaction.options as CommandInteractionOptionResolver);
+        await command.execute(client, interaction, interaction.options as CommandInteractionOptionResolver);
 
     
 	

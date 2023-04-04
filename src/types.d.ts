@@ -1,16 +1,17 @@
 import { Collection, CommandInteraction, CommandInteractionOptionResolver, Message, PermissionResolvable, SlashCommandBuilder, SlashCommandSubcommandBuilder } from "discord.js"
 import { Document } from 'mongoose';
+import { Client } from "discord.js";
 
 export interface BotEvent {
     name: string,
     once?: boolean | false,
-    async execute: (...args?) => void
+    async execute: (client: Client, ...args?) => void
 }
 
 export interface SlashCommand {
     name: string,
     data: SlashCommandBuilder | any,
-    async execute: (interaction : CommandInteraction, options: CommandInteractionOptionResolver) => Promise<void>,
+    async execute: (client: Client, interaction : CommandInteraction, options: CommandInteractionOptionResolver) => Promise<void>,
 }
 
 declare global {

@@ -7,7 +7,8 @@ import { connect } from 'mongoose'
 
 dotenv.config();
 
-const client = new Client({
+
+export const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -20,6 +21,7 @@ client.slashCommands = new Collection<string, SlashCommand>();
  
 const handlersDir = join(__dirname, "./handlers");
 
+module.exports = client;
 readdirSync(handlersDir).forEach(handler => {
   require(`${handlersDir}/${handler}`)(client);
 });
