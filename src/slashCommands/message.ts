@@ -12,7 +12,7 @@ export const command: SlashCommand = {
                 .setDescription('Message à afficher')
                 .setRequired(true);
         }),
-    async execute(interaction) {
+    async execute(client, interaction, options) {
         const message = interaction.options.get('message').value.toString();
         await interaction.reply(`Valeur du message : ${message}`);
     }

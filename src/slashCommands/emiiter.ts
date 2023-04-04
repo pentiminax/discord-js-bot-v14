@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, CommandInteraction, Interaction, Client, CacheType } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder, CommandInteraction, Interaction, Client, CacheType, GuildMember } from "discord.js"
 import { SlashCommand } from "../types";
  
 
@@ -30,7 +30,31 @@ export const command: SlashCommand = {
 
           )),  
          
-    execute: async (  interaction) => {
-       interaction.reply({content: "ok", ephemeral: true})
+    execute: async (client, interaction, options) => {
+      const { guild, member,  user } = interaction
+   
+      
+      
+
+      const memberOption = options.getString("liste-event"); 
+      if(memberOption){
+        const emitter = memberOption as keyof typeof MemberEvents
+        client.emit(emitter, member as GuildMember) // a quoi sa sert ?
+        interaction.reply({ content: options.getString("liste-event") + " -> " + interaction.user.username + " ✅ " }) 
+      }
+
+
+
+      interaction.reply({content: "ok", ephemeral: true})
     }
+}
+
+const MemberEvents = {
+  guildMemberAdd: 'guildMemberAdd',
+  guildMemberRemove: 'guildMemberRemove'
+}
+
+const GuildEvents = {
+  guildCreate: 'guildCreate',
+  guildRemove: 'guildRemove'
 }

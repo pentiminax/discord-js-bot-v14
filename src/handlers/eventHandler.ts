@@ -12,8 +12,8 @@ module.exports = (client: Client) => {
         const event: BotEvent = require(`${eventsDir}/${file}`).default;
 
         event.once 
-        ? client.once(event.name, (...args) => event.execute(...args)) 
-        : client.on(event.name, (...args) => event.execute(...args));
+        ? client.once(event.name, (...args) => event.execute(client, ...args)) 
+        : client.on(event.name, (...args) => event.execute(client, ...args));
 
         console.log(`🌠 Successfully loaded event ${event.name}`);
     })
