@@ -5,15 +5,15 @@ export const command: SlashCommand = {
     name: 'message',
     data: new SlashCommandBuilder()
         .setName("message")
-        .setDescription("Affiche un message")
+        .setDescription("Display a message")
         .addStringOption((option) => {
             return option
                 .setName('message')
-                .setDescription('Message à afficher')
+                .setDescription('Message to display')
                 .setRequired(true);
         }),
     async execute(interaction) {
-        const message = interaction.options.get('message').value.toString();
-        await interaction.reply(`Valeur du message : ${message}`);
+        const message = interaction.options.get('message')?.value?.toString();
+        await interaction.reply(`Message : ${message}`);
     }
 }

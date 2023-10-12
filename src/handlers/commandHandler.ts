@@ -6,7 +6,7 @@ import { SlashCommand } from "../types";
 
 module.exports = async (client: Client) => {
     const slashCommandsDir = join(__dirname, "../slashCommands");
-    const body = [];
+    const body: any[] = [];
 
     readdirSync(slashCommandsDir).forEach(file => {
         if (!file.endsWith(".js")) return;
