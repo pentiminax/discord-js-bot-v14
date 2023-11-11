@@ -5,7 +5,7 @@ export const command: SlashCommand = {
     name: 'ping',
     data: new SlashCommandBuilder()
         .setName("ping")
-        .setDescription("Affoche le ping du bot"),
+        .setDescription("Display bot's ping"),
     execute: async (interaction) => {
         await interaction.reply({
             embeds: [

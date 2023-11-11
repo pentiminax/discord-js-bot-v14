@@ -5,9 +5,9 @@ export const command: SlashCommand = {
     name: 'react',
     data: new SlashCommandBuilder()
         .setName('react')
-        .setDescription("Envoie un message avec une réation"),
+        .setDescription("Display a message with reaction"),
     async execute(interaction) {
-        const message = await interaction.reply({ content: 'Message avec réaction', fetchReply: true });
+        const message = await interaction.reply({ content: 'Message with reaction', fetchReply: true });
         await message.react('👋');
     }
 }

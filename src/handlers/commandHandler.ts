@@ -2,11 +2,11 @@ import { Client } from "discord.js";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { REST, Routes } from 'discord.js';
-import { SlashCommand } from "../types";
+import { SlashCommand } from "@/types";
 
 module.exports = async (client: Client) => {
     const slashCommandsDir = join(__dirname, "../slashCommands");
-    const body = [];
+    const body: any[] = [];
 
     readdirSync(slashCommandsDir).forEach(file => {
         if (!file.endsWith(".js")) return;
